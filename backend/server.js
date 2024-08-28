@@ -1,13 +1,19 @@
 const express = require("express");
-const fs = require("fs");
-
+const dotenv = require("dotenv");
 const cors = require("cors");
+const { logger } = require("./middlewares/logger");
+dotenv.config();
+
+const PORT = process.env.PORT;
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(logger());
 
-app.listen(8000, () => {
-  console.log("Server is running at localhost:8000");
+app.use("/users", userRoutes);
+
+app.listen(PORT, () => {
+  console.log(`server localhost:${PORT} deer aslaa`);
 });
