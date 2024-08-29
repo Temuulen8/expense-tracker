@@ -1,5 +1,6 @@
-const getAllCategory = (req, res) => {
-  // postgre select
+const sql = require("../config/db");
+
+const getAllCategory = async (req, res) => {
   res.status(200).json({});
 };
 
