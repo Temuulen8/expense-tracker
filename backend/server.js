@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(logger());
 
 app.use("/users", userRoutes);
-app.use("/categories", categoryRoutes);
+app.use("/category", categoryRoutes);
 
 app.listen(PORT, () => {
   console.log(`Сервер localhost:${PORT} дээр аслаа.`);
