@@ -7,20 +7,22 @@ const getAllCategory = async (req, res) => {
 };
 
 const createCategory = async (req, res) => {
-  const { name, description, category_img } = req.body;
+  const { name, description, category_image } = req.body;
+  console.log(req.body);
   const data = await sql`
-  INSERT INTO category(email, name, password, profile_img)
-  VALUES(${name}, ${description}, ${category_img});
+  INSERT INTO category(name, description, category_image)
+  VALUES(${name}, ${description}, ${category_image});
   `;
   console.log("DATA", data);
   res.status(200).json({ message: "CREATED NEW category", category: data });
 };
 const updateCategory = async (req, res) => {
   const { id } = req.params;
-  const { name, description, category_img } = req.body;
+  const { name, description, category_image } = req.body;
+  console.log(req.params);
 
   const data =
-    await sql`UPDATE category SET name=${name}, description=${description}, category_img=${category_img} WHERE id=${id}`;
+    await sql`UPDATE category SET name=${name}, description=${description}, category_image=${category_image} WHERE id=${id}`;
   console.log("DATA", data);
   res.status(200).json({ message: "updated category", category: data });
 };
