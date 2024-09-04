@@ -7,16 +7,29 @@ const getAllRecord = async (req, res) => {
 };
 
 const createRecord = async (req, res) => {
-  const { email, name, password, profile_img } = req.body;
+  const { name, amount, description } = req.body;
   const data = await sql`
-  INSERT INTO users(email, name, password, profile_img)
-  VALUES(${email},${name}, ${password}, ${profile_img});
+  INSERT INTO record( name, amount, description)
+  VALUES(${name}, ${amount},  ${description});
   `;
   console.log("DATA", data);
-  res.status(200).json({ message: "CREATED NEW USER", user: data });
+  res.status(200).json({ message: "CREATED NEW record", record: data });
 };
-const updateRecord = () => {};
-const deleteRecord = () => {};
+const updateRecord = async (req, res) => {
+  const { id } = req.params; // request, res response
+  const { name, amount } = req.body;
+
+  const data =
+    await sql`UPDATE record SET name=${name}, amount=${amount} WHERE id=${id}`;
+  console.log("DATA", data);
+  res.status(200).json({ message: "updated record", record: data });
+};
+const deleteRecord = async (req, res) => {
+  const { id } = req.params;
+  const data = await sql`DELETE FROM record WHERE id=${id}`;
+  console.log("DATA", data);
+  res.status(200).json({ message: "delete record", record: data });
+};
 
 module.exports = {
   getAllRecord,

@@ -16,13 +16,23 @@ const Login = () => {
   });
 
   const logIn = async () => {
+    // ES5
+    // const email = userData.email;
+    // const password = userData.password
+    // ES6 Onject destructing
     const { email, password } = userData;
 
     try {
-      const response = await axios.post(`${apiUrl}/auth/signin`, {
+      const response = await axios.post(`http://localhost:8008/auth/signin`, {
         email,
         password,
       });
+
+      // const response = fetch("http://localhost:8008/auth/signin", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ email, password }),
+      // });
 
       if (response.status === 200) {
         toast.success("User successfully signed in", { autoClose: 1000 });

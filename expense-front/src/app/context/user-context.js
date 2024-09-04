@@ -17,14 +17,15 @@ export const UserProvider = ({ children }) => {
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get(`${apiUrl}/users/profile`, {
+      const response = await axios.get(`http://localhost:8008/users/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
       if (response.status === 200) {
-        setUser(response.data);
+        const { user } = response.data;
+        setUser(user);
         console.log("USER", response.data);
       }
     } catch (error) {

@@ -1,9 +1,9 @@
 const { Router } = require("express");
 
 const {
-  updateCategory,
   getAllCategory,
   createCategory,
+  updateCategory,
   deleteCategory,
 } = require("../controllers/category-controller");
 const { auth } = require("../middlewares/auth");
