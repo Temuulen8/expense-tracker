@@ -71,57 +71,66 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-10">
-      <Image src="./logo.svg" width={90} height={25} alt="Logo" />
-      <h2>Create Geld account</h2>
-      <div className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Name"
-          className="w-full max-w-xs input input-bordered"
-          value={userData.name}
-          onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Email"
-          className="w-full max-w-xs input input-bordered"
-          value={userData.email}
-          onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full max-w-xs input input-bordered"
-          value={userData.password}
-          onChange={(e) =>
-            setUserData({ ...userData, password: e.target.value })
-          }
-        />
-        <input
-          type="password"
-          placeholder="Re-password"
-          className="w-full max-w-xs input input-bordered"
-          value={userData.repassword}
-          onChange={(e) =>
-            setUserData({ ...userData, repassword: e.target.value })
-          }
-        />
-        {/* <input
-          type="file"
-          onChange={(e) => setImage(e.target.files[0])}
-          className="w-full max-w-xs input input-bordered"
-        /> */}
-        <button className="btn bg-[#0166FF] text-white " onClick={signUp}>
-          Sign Up
-        </button>
+    <div className="flex">
+      <div className="flex flex-col items-center justify-center h-screen gap-10 w-1/2">
+        <Image src="./logo.svg" width={90} height={25} alt="Logo" />
+        <div className="flex flex-col items-center gap-2">
+          <h2 className="text-2xl	font-semibold	">Create Geld account</h2>
+          <h3 className="text-[#334155]">
+            Sign up below to create your Wallet account
+          </h3>
+        </div>
+        <div className="flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Name"
+            className="w-[384px] h-[48px] bg-[#F3F4F6] rounded-md pl-4 border"
+            value={userData.name}
+            onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="Email"
+            className="w-[384px] h-[48px]  bg-[#F3F4F6] rounded-md pl-4 border"
+            value={userData.email}
+            onChange={(e) =>
+              setUserData({ ...userData, email: e.target.value })
+            }
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-[384px] h-[48px] bg-[#F3F4F6] rounded-md pl-4 border"
+            value={userData.password}
+            onChange={(e) =>
+              setUserData({ ...userData, password: e.target.value })
+            }
+          />
+          <input
+            type="password"
+            placeholder="Re-password"
+            className="w-[384px] h-[48px] bg-[#F3F4F6] rounded-md pl-4 border"
+            value={userData.repassword}
+            onChange={(e) =>
+              setUserData({ ...userData, repassword: e.target.value })
+            }
+          />
+          <button
+            className="btn bg-[#0166FF] text-white rounded-[20px] w-[384px] h-[48px] "
+            onClick={signUp}
+          >
+            Sign Up
+          </button>
+        </div>
+        <div>
+          <span>Already have account? </span>
+          <Link href="/login">
+            <button className="btn btn-link text-[#0166FF]">Log in</button>
+          </Link>
+        </div>
       </div>
-      <div>
-        <span>Already have account?</span>
-        <Link href="/login">
-          <button className="btn btn-link">Log in</button>
-        </Link>
-      </div>
+
+      <div className="bg-[#0166FF] w-1/2"></div>
     </div>
   );
 };
