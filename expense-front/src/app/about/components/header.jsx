@@ -6,7 +6,7 @@ export const Header = ({ user, logOut }) => {
   return (
     <header className="flex items-center max-w-[1200px] mx-auto justify-between py-4">
       <div className="flex gap-6 items-center">
-        <Image src="/Vector.svg" width={28} height={28} alt="logo" />
+        <Image src="/Vector.png" width={28} height={28} alt="logo" />
         <Link href="/dashboard">
           <p>Dashboard</p>
         </Link>

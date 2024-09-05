@@ -3,27 +3,27 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../context/user-context";
 import { useRouter } from "next/navigation";
-import { Header } from "../components";
+import { Header } from "../about/components";
 
 const Layout = ({ children }) => {
-	const { user, fetchUserData } = useContext(UserContext);
-	const router = useRouter();
+  const { user, fetchUserData } = useContext(UserContext);
+  const router = useRouter();
 
-	useEffect(() => {
-		fetchUserData();
-	}, []);
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
-	const logOut = () => {
-		localStorage.removeItem("token");
-		router.push("/login");
-	};
+  const logOut = () => {
+    localStorage.removeItem("token");
+    router.push("/login");
+  };
 
-	return (
-		<div>
-			<Header user={user} logOut={logOut} />
-			{children}
-		</div>
-	);
+  return (
+    <div>
+      <Header user={user} logOut={logOut} />
+      {children}
+    </div>
+  );
 };
 
 export default Layout;

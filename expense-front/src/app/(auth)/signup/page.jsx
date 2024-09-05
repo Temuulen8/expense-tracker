@@ -49,16 +49,13 @@ const SignUp = () => {
     }
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/signup`,
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ email, name, password }),
-        }
-      );
+      const response = await fetch(`${apiUrl}/auth/signup`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ email, name, password }),
+      });
 
       if (response.status === 201) {
         toast.success("User successfully signed up", { autoClose: 1000 });
@@ -73,7 +70,7 @@ const SignUp = () => {
   return (
     <div className="flex">
       <div className="flex flex-col items-center justify-center h-screen gap-10 w-1/2">
-        <Image src="./logo.svg" width={90} height={25} alt="Logo" />
+        <Image src="/logo.png" width={90} height={25} alt="Logo" />
         <div className="flex flex-col items-center gap-2">
           <h2 className="text-2xl	font-semibold	">Create Geld account</h2>
           <h3 className="text-[#334155]">

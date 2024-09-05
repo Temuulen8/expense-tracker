@@ -1,5 +1,11 @@
 const sql = require("../config/db");
 
+const getTransaction = async (req, res) => {
+  const data = await sql`SELECT * FROM record WHERE uid=${id}`;
+  console.log("DATA", data);
+  res.status(200).json({ message: "GET TRANSACTION", record: data });
+};
+
 const getAllRecord = async (req, res) => {
   const data = await sql`SELECT * FROM record`;
   console.log("DATA", data);
@@ -32,6 +38,7 @@ const deleteRecord = async (req, res) => {
 };
 
 module.exports = {
+  getTransaction,
   getAllRecord,
   createRecord,
   updateRecord,

@@ -23,7 +23,7 @@ const Login = () => {
     const { email, password } = userData;
 
     try {
-      const response = await axios.post(`http://localhost:8008/auth/signin`, {
+      const response = await axios.post(`${apiUrl}/auth/signin`, {
         email,
         password,
       });
@@ -50,7 +50,7 @@ const Login = () => {
   return (
     <div className="flex">
       <div className="flex flex-col items-center justify-center h-screen gap-10 w-1/2">
-        <Image src="./logo.svg" width={90} height={25} alt="Logo" />
+        <Image src="/logo.png" width={90} height={25} alt="Logo" />
         <div className="flex flex-col items-center gap-2">
           <h2 className="text-2xl	font-semibold	">Welcome Back</h2>
           <h3 className="text-[#334155]">
