@@ -7,12 +7,7 @@ import { apiUrl } from "@/utils/util";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    userId: "",
-    name: "",
-    email: "",
-    profile_img: "",
-  });
+  const [user, setUser] = useState(null);
 
   const fetchUserData = async () => {
     try {

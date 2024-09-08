@@ -13,20 +13,23 @@ export const Header = ({ user, logOut }) => {
         <Link href="/records">
           <p>Records</p>
         </Link>
+        <Link href="/records">
+          <p>{user?.name}</p>
+        </Link>
       </div>
       <div className="flex gap-6 items-center">
         <button className="btn bg-[#0166FF] text-white btn-sm flex items-center rounded-[20px] px-3 py-1">
           <PlusIcon />
           Records
         </button>
-        <div className="flex gap-9">
-          <div className="avatar w-12 h-12 flex items-center gap-2 font-medium">
-            {user.name}
+        <div>
+          <div>
+            <img src={user?.profile_img} />
           </div>
-          <button className="btn btn-sm" onClick={logOut}>
-            Log out
-          </button>
         </div>
+        <button className="btn btn-sm" onClick={logOut}>
+          Log out
+        </button>
       </div>
     </header>
   );

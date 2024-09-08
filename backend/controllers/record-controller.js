@@ -1,15 +1,19 @@
 const sql = require("../config/db");
 
-const getTransaction = async (req, res) => {
-  const data = await sql`SELECT * FROM record WHERE uid=${id}`;
+const getInfo = async (req, res) => {
+  const data =
+    await sql`SELECT transaction_type, SUM (amount) FROM record GROUP BY transaction_type`;
   console.log("DATA", data);
   res.status(200).json({ message: "GET TRANSACTION", record: data });
 };
 
 const getAllRecord = async (req, res) => {
-  const data = await sql`SELECT * FROM record`;
-  console.log("DATA", data);
-  res.status(200).json({ message: "GET RECORD", record: data });
+  try {
+    const info = await sql`SELECT * FROM record`;
+    res.status(200).json({ info });
+  } catch (error) {
+    res.status(400).json({ message: "failed", error });
+  }
 };
 
 const createRecord = async (req, res) => {
@@ -21,6 +25,7 @@ const createRecord = async (req, res) => {
   console.log("DATA", data);
   res.status(200).json({ message: "CREATED NEW record", record: data });
 };
+
 const updateRecord = async (req, res) => {
   const { id } = req.params; // request, res response
   const { name, amount } = req.body;
@@ -30,6 +35,7 @@ const updateRecord = async (req, res) => {
   console.log("DATA", data);
   res.status(200).json({ message: "updated record", record: data });
 };
+
 const deleteRecord = async (req, res) => {
   const { id } = req.params;
   const data = await sql`DELETE FROM record WHERE id=${id}`;
@@ -38,9 +44,9 @@ const deleteRecord = async (req, res) => {
 };
 
 module.exports = {
-  getTransaction,
   getAllRecord,
   createRecord,
   updateRecord,
   deleteRecord,
+  getInfo,
 };

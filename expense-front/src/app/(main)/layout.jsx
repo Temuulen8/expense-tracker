@@ -2,7 +2,7 @@
 
 import { useContext, useEffect } from "react";
 import { UserContext } from "../context/user-context";
-import { useRouter } from "next/navigation";
+import { useRouter, redirect } from "next/navigation";
 import { Header } from "../about/components";
 
 const Layout = ({ children }) => {
@@ -17,6 +17,10 @@ const Layout = ({ children }) => {
     localStorage.removeItem("token");
     router.push("/login");
   };
+
+  // if (!user) {
+  //   redirect("/login");
+  // }
 
   return (
     <div>
