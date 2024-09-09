@@ -14,8 +14,8 @@ const Dashboard = () => {
   const fetchUserTransactions = async () => {
     try {
       const res = await axios.get(`${apiUrl}/record`);
-      console.log("ST", res.data.record);
-      setCardInfo(res.data.record);
+      console.log("dd", res.data.record);
+      setTransaction(res.data.record);
     } catch (error) {
       console.error(error);
       toast.error("Failed to fetch transactions");
@@ -24,8 +24,8 @@ const Dashboard = () => {
   const getCardInfo = async () => {
     try {
       const res = await axios.get(`${apiUrl}/record/info`);
-      console.log("dd", res.data.info);
-      setTransaction(res.data.info);
+      console.log("ST", res.data.info);
+      setCardInfo(res.data.info);
     } catch (error) {
       console.error(error);
       toast.error("Failed to fetch transactions");
@@ -66,7 +66,9 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="flex flex-col pl-4 gap-4 pt-3">
-                <div className="font-semibold text-4xl">1,200,000</div>
+                <div className="font-semibold text-4xl">
+                  {cardInfo?.income.sum}
+                </div>
                 <div className="text-[#64748B]">Your Income Amount</div>
                 <div className="flex items-center">
                   <img src="/up.png" alt="" />
@@ -82,7 +84,9 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="flex flex-col pl-4 gap-4 pt-3">
-                <div className="font-semibold text-4xl">-1,200,00</div>
+                <div className="font-semibold text-4xl">
+                  -{cardInfo?.expense.sum}
+                </div>
                 <div className="text-[#64748B]">Your expence Amount</div>
                 <div className="flex items-center">
                   <img src="/down.png" alt="" />
