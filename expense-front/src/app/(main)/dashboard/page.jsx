@@ -52,7 +52,7 @@ const Dashboard = () => {
   }, [user]);
   console.log("tr", transaction);
   return (
-    <div className="">
+    <div className="bg-gray-100 pt-8">
       <div>
         <div className="flex justify-center">
           <div className="flex gap-6">
