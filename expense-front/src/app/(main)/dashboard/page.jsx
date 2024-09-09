@@ -5,6 +5,19 @@ import { UserContext } from "../../context/user-context";
 import axios from "axios";
 import { apiUrl } from "../../../utils/util";
 import { toast } from "react-toastify";
+import BarChart from "@/app/components/dashboard/barChart";
+import DoughnutChart from "@/app/components/dashboard/doughnut";
+
+import {
+  ArcElement,
+  BarElement,
+  CategoryScale,
+  Chart,
+  Legend,
+  LinearScale,
+} from "chart.js";
+
+Chart.register(CategoryScale, LinearScale, BarElement, ArcElement, Legend);
 
 const Dashboard = () => {
   const { user } = useContext(UserContext);
@@ -14,8 +27,8 @@ const Dashboard = () => {
   const fetchUserTransactions = async () => {
     try {
       const res = await axios.get(`${apiUrl}/record`);
-      console.log("dd", res.data.record);
-      setTransaction(res.data.record);
+      console.log("dd", res.data);
+      setTransaction(res.data.info);
     } catch (error) {
       console.error(error);
       toast.error("Failed to fetch transactions");
@@ -23,9 +36,10 @@ const Dashboard = () => {
   };
   const getCardInfo = async () => {
     try {
+      console.log("ST", apiUrl);
       const res = await axios.get(`${apiUrl}/record/info`);
-      console.log("ST", res.data.info);
-      setCardInfo(res.data.info);
+      console.log("ST", res.data);
+      setCardInfo(res.data);
     } catch (error) {
       console.error(error);
       toast.error("Failed to fetch transactions");
@@ -34,9 +48,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchUserTransactions();
-    getCardInfo;
+    getCardInfo();
   }, [user]);
-
+  console.log("tr", transaction);
   return (
     <div className="">
       <div>
@@ -96,52 +110,44 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+
+        <div className="flex gap-6 justify-center">
+          <div className="w-[588px] h-[410px] border rounded-[18px] mt-6">
+            <p className="h-[56px] border-b-[1px]  flex items-center pl-5 font-semibold">
+              Income - Expense
+            </p>
+            <div>
+              <BarChart />
+            </div>
+          </div>
+          <div className="w-[588px] h-[410px] border rounded-[18px] mt-6">
+            <p className="h-[56px] border-b-[1px] flex items-center pl-5  font-semibold">
+              Income - Expense
+            </p>
+            <div>
+              <DoughnutChart />
+            </div>
+          </div>
+        </div>
+
         <div className="flex justify-center pt-6">
           <div className="w-[1200px] rounded-xl border">
             <div className="border-b-[1px] py-4 pl-4 font-semibold">
               Last Records
             </div>
-            <div className="flex py-4 pl-4 gap-4 border-b-[1px]">
-              <img src="/home.png" alt="" />
-              <div>
-                <p>Lending & Renting</p>
-                <p className="text-[#6B7280] text-xs">3 hours ago</p>
-              </div>
-            </div>
-            <div className="flex py-4 pl-4 gap-4 border-b-[1px]">
-              <img src="/home.png" alt="" />
-              <div>
-                <p>Lending & Renting</p>
-                <p className="text-[#6B7280] text-xs">3 hours ago</p>
-              </div>
-            </div>
-            <div className="flex py-4 pl-4 gap-4 border-b-[1px]">
-              <img src="/home.png" alt="" />
-              <div>
-                <p>Lending & Renting</p>
-                <p className="text-[#6B7280] text-xs">3 hours ago</p>
-              </div>
-            </div>
-            <div className="flex py-4 pl-4 gap-4 border-b-[1px]">
-              <img src="/home.png" alt="" />
-              <div>
-                <p>Lending & Renting</p>
-                <p className="text-[#6B7280] text-xs">3 hours ago</p>
-              </div>
-            </div>
-            <div className="flex py-4 pl-4 gap-4">
-              <img src="/home.png" alt="" />
-              <div>
-                <p>Lending & Renting</p>
-                <p className="text-[#6B7280] text-xs">3 hours ago</p>
-              </div>
-            </div>
+            {transaction?.map((tr) => {
+              return (
+                <div className="flex py-4 pl-4 gap-4 border-t-[1px]">
+                  <img src="/home.png" alt="" />
+                  <div>
+                    <p>{tr.name}</p>
+                    <p className="text-[#6B7280] text-xs">3 hours ago</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-
-        {transaction?.map((tr) => {
-          return <div>{tr.name}</div>;
-        })}
       </div>
     </div>
   );

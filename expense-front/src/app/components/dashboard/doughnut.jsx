@@ -1,6 +1,6 @@
 import { Doughnut } from "react-chartjs-2";
 
-const DoughnurChart = ({ categoryData }) => {
+const DoughnutChart = ({ categoryData }) => {
   const data2 = {
     datasets: [
       {
@@ -38,8 +38,8 @@ const DoughnurChart = ({ categoryData }) => {
   };
 
   return (
-    <div className="flex items-center justify-center p-4 bg-white card ">
-      <div className="h-96 w-96">
+    <div className="flex items-center justify-center p-4 bg-white ">
+      <div className="h-[307px] flex items-center">
         <Doughnut options={options2} data={data2} />
         {/* {categoryData && <Doughnut options={options2} data={data2} />}
         {!categoryData && (
@@ -52,4 +52,4 @@ const DoughnurChart = ({ categoryData }) => {
   );
 };
 
-export default DoughnurChart;
+export default DoughnutChart;

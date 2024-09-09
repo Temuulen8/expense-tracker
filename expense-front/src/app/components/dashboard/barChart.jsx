@@ -28,7 +28,7 @@ const BarChart = ({ barChartData }) => {
   };
 
   return (
-    <div className="flex items-center justify-center p-4 bg-white card">
+    <div className="flex items-center justify-center p-4 bg-white card h-[330px]">
       {/* {barChartData && <Bar data={data1} options={options1} />} */}
       <Bar data={data1} options={options1} />
       {/* {!barChartData && (

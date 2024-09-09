@@ -1,6 +1,7 @@
 import { PlusIcon } from "@/icons";
 import Image from "next/image";
 import Link from "next/link";
+import Add_record from "./dashboard/addRecord";
 
 export const Header = ({ user, logOut }) => {
   return (
@@ -18,7 +19,10 @@ export const Header = ({ user, logOut }) => {
         </Link>
       </div>
       <div className="flex gap-6 items-center">
-        <button className="btn bg-[#0166FF] text-white btn-sm flex items-center rounded-[20px] px-3 py-1">
+        <button
+          className="btn bg-[#0166FF] text-white btn-sm flex items-center rounded-[20px] px-3 py-1"
+          onClick={Add_record}
+        >
           <PlusIcon />
           Records
         </button>
