@@ -1,5 +1,18 @@
 const sql = require("../config/db");
 
+const getChartData = async (req, res) => {
+  try {
+    const donutChartData =
+      await sql`SELECT SUM(r.amount), c.name cat_name FROM record r 
+                INNER JOIN category c ON r.cid = c.id 
+                WHERE r.transaction_type = 'EXP'
+                GROUP BY cat_name`;
+    res.status(200).json({ message: "success", donut: donutChartData });
+  } catch (error) {
+    res.status(400).json({ message: "failed", error });
+  }
+};
+
 const getInfo = async (req, res) => {
   try {
     const [income, expense] =
@@ -52,4 +65,5 @@ module.exports = {
   updateRecord,
   deleteRecord,
   getInfo,
+  getChartData,
 };
