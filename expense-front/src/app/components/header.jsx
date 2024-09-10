@@ -24,7 +24,7 @@ export const Header = ({ user, logOut }) => {
           onClick={Add_record}
         >
           <PlusIcon />
-          Records
+          Record
         </button>
         <div>
           <div>

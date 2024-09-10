@@ -72,14 +72,14 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[384px] h-[216px] rounded-[18px] border">
+            <div className="w-[384px] h-[216px] rounded-[18px] border bg-[white]">
               <div className="h-[56px] border-b-[1px] flex items-center">
                 <div className="pl-5 flex items-center gap-2">
                   <img src="/dotg.png" alt="" />
                   <p>Your income</p>
                 </div>
               </div>
-              <div className="flex flex-col pl-4 gap-4 pt-3">
+              <div className="flex flex-col pl-4 gap-4 pt-3 ">
                 <div className="font-semibold text-4xl">
                   {cardInfo?.income.sum}
                 </div>
@@ -90,7 +90,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[384px] h-[216px] rounded-[18px] border">
+            <div className="w-[384px] h-[216px] rounded-[18px] border bg-[white]">
               <div className="h-[56px] border-b-[1px] flex items-center">
                 <div className="pl-5 flex items-center gap-2">
                   <img src="/dotb.png" alt="" />
@@ -111,8 +111,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="flex gap-6 justify-center">
-          <div className="w-[588px] h-[410px] border rounded-[18px] mt-6">
+        <div className="flex gap-6 justify-center ">
+          <div className="w-[588px] h-[410px] border rounded-[18px] mt-6 bg-[white]">
             <p className="h-[56px] border-b-[1px]  flex items-center pl-5 font-semibold">
               Income - Expense
             </p>
@@ -120,7 +120,7 @@ const Dashboard = () => {
               <BarChart />
             </div>
           </div>
-          <div className="w-[588px] h-[410px] border rounded-[18px] mt-6">
+          <div className="w-[588px] h-[410px] border rounded-[18px] mt-6 bg-[white]">
             <p className="h-[56px] border-b-[1px] flex items-center pl-5  font-semibold">
               Income - Expense
             </p>
@@ -131,7 +131,7 @@ const Dashboard = () => {
         </div>
 
         <div className="flex justify-center pt-6">
-          <div className="w-[1200px] rounded-xl border">
+          <div className="w-[1200px] rounded-xl border bg-[white]">
             <div className="border-b-[1px] py-4 pl-4 font-semibold">
               Last Records
             </div>
@@ -146,6 +146,18 @@ const Dashboard = () => {
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        <div className="flex justify-center">
+          <div className=" h-[512px] w-[792px] rounded-3xl border bg-white ">
+            <div className="font-semibold text-xl h-[68px] border-b-[1px] flex items-center pl-5">
+              Add record
+            </div>
+            <div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
         </div>
       </div>

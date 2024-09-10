@@ -18,6 +18,7 @@ const Layout = ({ children }) => {
     router.push("/login");
   };
 
+  const addRecord = () => {};
   // if (!user) {
   //   redirect("/login");
   // }
