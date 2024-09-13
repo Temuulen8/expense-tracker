@@ -5,6 +5,8 @@ import { UserContext } from "../../context/user-context";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { IoMdAdd } from "react-icons/io";
+import { FaGreaterThan } from "react-icons/fa";
+import { FaLessThan } from "react-icons/fa";
 
 const Records = () => {
   const { user } = useContext(UserContext);
@@ -103,7 +105,35 @@ const Records = () => {
         </div>
       </div>
 
-      <div className="w-[894px]"></div>
+      <div className="w-[894px] flex flex-col gap-4">
+        <div className="flex justify-between">
+          <div className="flex items-center gap-3">
+            <button className="btn bg-[#E5E7EB]">
+              <FaLessThan />
+            </button>
+            <div>Last 30 Days</div>
+            <button className="btn bg-[#E5E7EB]">
+              <FaGreaterThan />
+            </button>
+          </div>
+          <div>
+            <select className="select select-bordered w-[180px]">
+              <option>Newest first</option>
+              <option>Han Solo</option>
+              <option>Greedo</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <p className="font-semibold">Today</p>
+          <div className="h-64px w-[894px]"></div>
+        </div>
+        <div>
+          <p className="font-semibold">Yesterday</p>
+          <div></div>
+        </div>
+      </div>
     </div>
   );
 };

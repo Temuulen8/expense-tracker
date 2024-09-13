@@ -22,6 +22,10 @@ app.use("/users", userRoutes);
 app.use("/record", recordRoutes);
 app.use("/category", categoryRoutes);
 
+app.get("/", (_, res) => {
+  res.send("welcome expense tracker API");
+});
+
 app.listen(PORT, () => {
   console.log(`Сервер localhost:${PORT} дээр аслаа.`);
 });
