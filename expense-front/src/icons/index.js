@@ -1,1 +1,1 @@
-export * from "./PlusIcon";
+export * from "./AddIcon";

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Add_record from "./dashboard/addRecord";
-import { PlusIcon } from "@/icons";
+import { AddIcon } from "@/icons";
 
 export const Header = ({ user, logOut }) => {
   return (
@@ -23,7 +23,7 @@ export const Header = ({ user, logOut }) => {
           className="btn bg-[#0166FF] text-white btn-sm flex items-center rounded-[20px] px-3 py-1"
           onClick={Add_record}
         >
-          <PlusIcon />
+          <AddIcon />
           Record
         </button>
         <div>

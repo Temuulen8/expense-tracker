@@ -1,4 +1,4 @@
-export const PlusIcon = () => {
+export const AddIcon = () => {
   return (
     <svg
       width="20"
