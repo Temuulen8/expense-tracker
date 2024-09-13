@@ -2,7 +2,7 @@
 
 import { useContext, useEffect } from "react";
 import { UserContext } from "../context/user-context";
-import { useRouter, redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Header } from "../components";
 
 const Layout = ({ children }) => {

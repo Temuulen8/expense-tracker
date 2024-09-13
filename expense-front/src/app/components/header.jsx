@@ -1,7 +1,7 @@
-import { PlusIcon } from "@/icons";
 import Image from "next/image";
 import Link from "next/link";
 import Add_record from "./dashboard/addRecord";
+import { PlusIcon } from "@/icons";
 
 export const Header = ({ user, logOut }) => {
   return (
